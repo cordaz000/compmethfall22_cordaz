@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 from integrating_functions import trap_integral
 from integrating_functions import simpson_integral
+from integrating_functions import integral_area_function_x
 
 
 #integrate exp(-t**2)dt from 0, 3 in steps of 0.1
@@ -39,10 +40,19 @@ Error_Simp = (1/15)*(I_simp_2 - I_simp_1)
 print("Value of integral using 2nd order Newton-Cotes integration is " \
         + str(np.round(I_simp_1,3)) + " and the error is " + str(Error_Simp))
 
+intervals = np.linspace(0,3, 31)
+
+dxs = list()
+for i in range(1,len(intervals)):
+    dxs.append((intervals[i-1], intervals[i])) # [ (0, 0.1), (0.1, 0.2), etc]
+
+y_vals = integral_area_function_x(dxs,trap_integral, g)
+
 #plot the value of the integral as a value of x
-x_vals = np.linspace(0,3,100)
-function_mapper = lambda t : np.exp(-t**2)
+
 fig,ax = plt.subplots()
-y_vals = function_mapper(x_vals)
-ax.plot(x_vals,y_vals)
+
+ax.scatter(intervals[1:],y_vals, color = 'k')
+ax.set_ylabel('Area as function of x')
+ax.set_title('Value of the integral as a function of x')
 plt.show()

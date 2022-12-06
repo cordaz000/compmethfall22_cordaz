@@ -1,7 +1,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
+
 
 from functions_hw8 import Second2FirstOrderODE
 from functions_hw8 import Runge_Kutta_4th_Order
@@ -28,8 +28,8 @@ epsilon = 10e-5 #use this small number to compare floats
 
 exes,whys = Runge_Kutta_4th_Order(tpoints,r,h,xpoints,ypoints,Second2FirstOrderODE,epsilon,mass1)
 
-# TrajectoryPlotter(exes,whys)
-# plt.show()
+TrajectoryPlotter(exes,whys)
+plt.show()
 
 #see effect of different masses on trajectory
 masses = np.linspace(0.2, 0.8,4) #this has 4 masses

@@ -10,7 +10,7 @@ def trap_integral(a,b,N,f):
     curve as per the trapezoidal rule.
     """
     #find bin width
-    h = (b - a)/N
+    h = (b - a) / N
     s = 0.5*f(a) + 0.5*f(b) #first and last heights get counted once
 
     for k in range(1,N):
